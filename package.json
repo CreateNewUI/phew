@@ -1,0 +1,46 @@
+{
+  "name": "@new-ui/components",
+  "version": "0.0.0",
+  "description": "[WIP]",
+  "peerDependencies": {
+    "@new-ui/foundations": "^0.3.2"
+  },
+  "source": "src/index.scss",
+  "main": "dist/index.css",
+  "targets": {
+    "main": false
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewDesignFile/components.git"
+  },
+  "keywords": [
+    "new-ui",
+    "components",
+    "forms",
+    "design-system"
+  ],
+  "author": "@planetabhi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NewDesignFile/components/issues"
+  },
+  "homepage": "https://github.com/NewDesignFile/components#readme",
+  "devDependencies": {
+    "@new-ui/foundations": "^0.3.2",
+    "@parcel/transformer-css": "^2.16.1",
+    "@parcel/transformer-sass": "^2.16.1",
+    "autoprefixer": "^10.4.22",
+    "parcel": "^2.16.1"
+  }
+}
