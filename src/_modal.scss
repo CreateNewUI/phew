@@ -1,0 +1,283 @@
+/**
+ * Modal (dialog element)
+ */
+
+:root,
+:host {
+  --scrollbar-width: 0px;
+}
+
+/* Base dialog/modal styles */
+dialog {
+  display: flex;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+  min-width: 100%;
+  height: inherit;
+  min-height: 100%;
+  padding: 0;
+  border: 0;
+  backdrop-filter: blur(0.25rem);
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #212529;
+}
+
+/* Modal content container (article) */
+dialog > article {
+  width: 100%;
+  max-width: 540px;
+  max-height: calc(100vh - 1rem * 2);
+  margin: 1rem;
+  padding: 1.5rem;
+  overflow: auto;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive width adjustments */
+@media (min-width: 576px) {
+  dialog > article {
+    max-width: 510px;
+  }
+}
+
+@media (min-width: 768px) {
+  dialog > article {
+    max-width: 700px;
+  }
+}
+
+/* Modal header */
+dialog > article > header {
+  margin-bottom: 1rem;
+}
+
+dialog > article > header > * {
+  margin-bottom: 0;
+}
+
+/* Close button in header */
+dialog > article > header .close,
+dialog > article > header :is(a, button)[rel="prev"] {
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0;
+  float: right;
+}
+
+/* Modal footer */
+dialog > article > footer {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+dialog > article > footer button,
+dialog > article > footer [role="button"] {
+  margin-bottom: 0;
+}
+
+dialog > article > footer button:not(:first-of-type),
+dialog > article > footer [role="button"]:not(:first-of-type) {
+  margin-left: 0.5rem;
+}
+
+/* Close icon button */
+dialog > article .close,
+dialog > article :is(a, button)[rel="prev"] {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+  background-position: center;
+  background-size: auto 1rem;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.15s ease-in-out;
+}
+
+dialog > article .close:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+dialog > article :is(a, button)[rel="prev"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+  opacity: 1;
+}
+
+/* Closed state */
+dialog:not([open]),
+dialog[open="false"] {
+  display: none;
+}
+
+/* Body class when modal is open */
+.modal-is-open {
+  padding-right: var(--scrollbar-width, 0px);
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.modal-is-open dialog {
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+/* Opening animation */
+.modal-is-opening dialog,
+.modal-is-opening dialog > article {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+.modal-is-opening dialog {
+  animation-duration: 0.8s;
+  animation-name: modal-overlay-open;
+}
+
+.modal-is-opening dialog > article {
+  animation-delay: 0.2s;
+  animation-name: modal-content-open;
+}
+
+/* Closing animation */
+.modal-is-closing dialog,
+.modal-is-closing dialog > article {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+  animation-direction: reverse;
+}
+
+.modal-is-closing dialog {
+  animation-duration: 0.8s;
+  animation-name: modal-overlay-open;
+}
+
+.modal-is-closing dialog > article {
+  animation-name: modal-content-open;
+}
+
+/* Keyframe animations */
+@keyframes modal-overlay-open {
+  from {
+    backdrop-filter: none;
+    background-color: transparent;
+  }
+  to {
+    backdrop-filter: blur(0.25rem);
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+@keyframes modal-content-open {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Size variants */
+dialog[data-size="small"] > article {
+  max-width: 400px;
+}
+
+@media (min-width: 576px) {
+  dialog[data-size="small"] > article {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 768px) {
+  dialog[data-size="small"] > article {
+    max-width: 400px;
+  }
+}
+
+dialog[data-size="large"] > article {
+  max-width: 900px;
+}
+
+@media (min-width: 576px) {
+  dialog[data-size="large"] > article {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  dialog[data-size="large"] > article {
+    max-width: 900px;
+  }
+}
+
+dialog[data-size="fullscreen"] > article {
+  max-width: calc(100% - 2rem);
+  max-height: calc(100vh - 2rem);
+}
+
+/* Scrollable content variant */
+dialog[data-scrollable="true"] > article {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 2rem);
+}
+
+dialog[data-scrollable="true"] > article > header,
+dialog[data-scrollable="true"] > article > footer {
+  flex-shrink: 0;
+}
+
+dialog[data-scrollable="true"] > article > * {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Color variants for overlay */
+dialog[data-variant="dark"] {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+dialog[data-variant="light"] {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(0.5rem);
+}
+
+/* Centered content variant (no max-width) */
+dialog[data-centered="true"] > article {
+  max-width: none;
+  width: auto;
+  text-align: center;
+}
+
+/* Modal without backdrop blur */
+dialog[data-blur="false"] {
+  backdrop-filter: none;
+}
+
+/* Utility classes for modal backdrop click handling */
+dialog::backdrop {
+  background-color: transparent;
+}
+
+/* Print styles - hide modals when printing */
+@media print {
+  dialog {
+    display: none;
+  }
+}

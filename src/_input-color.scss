@@ -1,0 +1,95 @@
+/**
+ * Input type color
+ */
+
+[type="color"] {
+    width: 3rem;
+    height: 2.5rem;
+    padding: 0.25rem;
+    border: 1px solid #c0c0c0;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Webkit (Chrome, Safari, Edge) - Color swatch wrapper */
+[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+/* Webkit (Chrome, Safari, Edge) - Color swatch */
+[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 0.125rem;
+}
+
+/* Firefox - Focus inner */
+[type="color"]::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* Firefox - Color swatch */
+[type="color"]::-moz-color-swatch {
+    border: 0;
+    border-radius: 0.125rem;
+}
+
+/* Hover state */
+[type="color"]:hover {
+    border-color: #6c757d;
+}
+
+/* Focus state */
+[type="color"]:focus {
+    outline: none;
+    border-color: #1b6ec2;
+    box-shadow: 0 0 0 0.125rem rgba(27, 110, 194, 0.25);
+}
+
+/* Disabled state */
+[type="color"]:disabled {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Small variant */
+[type="color"][data-size="small"] {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.125rem;
+}
+
+/* Large variant */
+[type="color"][data-size="large"] {
+    width: 4rem;
+    height: 3rem;
+    padding: 0.375rem;
+}
+
+/* Full width option */
+[type="color"][data-full-width] {
+    width: 100%;
+}
+
+/* Validation states */
+[type="color"][aria-invalid="false"] {
+    border-color: #28a745;
+}
+
+[type="color"][aria-invalid="false"]:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.125rem rgba(40, 167, 69, 0.25);
+}
+
+[type="color"][aria-invalid="true"] {
+    border-color: #dc3545;
+}
+
+[type="color"][aria-invalid="true"]:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.125rem rgba(220, 53, 69, 0.25);
+}
