@@ -2,18 +2,19 @@
  * Accordion
  */
 
-details {
-    display: block;
-    margin-bottom: 1rem;
-    padding: 0;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    background-color: #fff;
-}
+// Chevron icon
+$chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+$chevron-primary: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b6ec2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
-/* Summary (clickable header) */
-details summary {
-    display: block;
+// Base accordion styles
+details {
+  margin-bottom: 1rem;
+  padding: 0;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  background-color: #fff;
+
+  summary {
     padding: 0.75rem 1rem;
     line-height: 1rem;
     list-style-type: none;
@@ -21,172 +22,79 @@ details summary {
     cursor: pointer;
     user-select: none;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
 
-/* Remove default markers */
-details summary::-webkit-details-marker {
-    display: none;
-}
+    // Remove default markers
+    &::-webkit-details-marker,
+    &::marker {
+      display: none;
+    }
 
-details summary::marker {
-    display: none;
-}
+    // Custom chevron icon
+    &::after {
+      content: "";
+      float: right;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+      background: $chevron right center / 1rem no-repeat;
+      transform: rotate(-90deg);
+      transition: transform 0.15s ease-in-out;
+    }
 
-details summary::-moz-list-bullet {
-    list-style-type: none;
-}
+    &:hover {
+      background-color: #f8f9fa;
+    }
 
-/* Custom chevron icon (collapsed state - pointing right) */
-details summary::after {
-content: "";
-    display: block;
-    width: 1rem;
-    height: 1rem;
-    margin-left: 0.5rem;
-    float: right;
-    transform: rotate(-90deg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-position: right center;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-    transition: transform 0.15s ease-in-out;
-}
+    &:focus-visible {
+      outline: 2px solid #1b6ec2;
+      outline-offset: 0.5rem;
+      color: #1b6ec2;
+    }
+  }
 
-/* Hover state */
-details summary:hover {
-    background-color: #f8f9fa;
-}
-
-/* Focus state */
-details summary:focus {
-    outline: none;
-    color: #1b6ec2;
-    background-color: #f8f9fa;
-}
-
-/* Focus-visible state (keyboard navigation) */
-details summary:focus-visible {
-    outline: 2px solid #1b6ec2;
-    outline-offset: 0.5rem;
-    color: #1b6ec2;
-}
-
-/* Button role variant */
-details summary[role="button"] {
-    width: 100%;
-    text-align: left;
-    font-weight: 500;
-}
-
-details summary[role="button"]::after {
-    height: 1.5rem;
-}
-
-/* Open state */
-details[open] > summary {
-    margin-bottom: 0;
-    border-bottom: 1px solid #dee2e6;
-    color: #212529;
-}
-
-details[open] > summary:not(:focus) {
-    color: #212529;
-}
-
-/* Chevron rotation when open (pointing down) */
-details[open] > summary::after {
-    transform: rotate(0);
-}
-
-/* Content area styling */
-details[open] {
-    padding-bottom: 0.75rem;
-}
-
-details > :not(summary) {
+  > :not(summary) {
     padding: 0.75rem 1rem;
-    padding-top: 0.75rem;
+  }
+
+  // Open state
+  &[open] {
+    padding-bottom: 0.75rem;
+
+    > summary {
+      border-bottom: 1px solid #dee2e6;
+      color: #212529;
+
+      &::after {
+        transform: rotate(0);
+      }
+    }
+  }
 }
 
-/* Active state */
-details summary:active {
-    background-color: #e9ecef;
-}
-
-/* RTL (Right-to-Left) support */
-[dir="rtl"] details summary {
-    text-align: right;
-}
-
-[dir="rtl"] details summary::after {
-    float: left;
-    margin-left: 0;
-    margin-right: 0.5rem;
-    background-position: left center;
-}
-
-/* Nested accordions */
-details details {
-    margin: 0.5rem 0;
-    border-left: 2px solid #dee2e6;
-    border-radius: 0;
-}
-
-details details summary {
-    padding-left: 1.5rem;
-    font-size: 0.9375rem;
-}
-
-/* Color variants */
+// Primary variant
 details[data-variant="primary"] {
-    border-color: #1b6ec2;
-}
+  border-color: #1b6ec2;
 
-details[data-variant="primary"] summary {
+  summary {
     color: #1b6ec2;
     background-color: rgba(27, 110, 194, 0.05);
+
+    &::after {
+      background-image: $chevron-primary;
+    }
+  }
 }
 
-details[data-variant="primary"] summary::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b6ec2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-
-details[data-variant="success"] {
-    border-color: #28a745;
-}
-
-details[data-variant="success"] summary {
-    color: #28a745;
-    background-color: rgba(40, 167, 69, 0.05);
-}
-
-details[data-variant="success"] summary::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2328a745' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-
-details[data-variant="danger"] {
-    border-color: #dc3545;
-}
-
-details[data-variant="danger"] summary {
-    color: #dc3545;
-    background-color: rgba(220, 53, 69, 0.05);
-}
-
-details[data-variant="danger"] summary::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc3545' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-
-/* Borderless variant */
+// Borderless variant
 details[data-variant="borderless"] {
-    border: none;
-    background-color: transparent;
-}
+  border: none;
+  background-color: transparent;
 
-details[data-variant="borderless"] summary {
+  summary {
     padding-left: 0;
-}
+  }
 
-details[data-variant="borderless"][open] > summary {
+  &[open] > summary {
     border-bottom: none;
+  }
 }

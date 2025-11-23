@@ -2,9 +2,34 @@
  * Input type file
  */
 
-[type="file"] {
+// Mixin for button variants
+@mixin file-button-variant($bg, $border, $hover-bg, $hover-border, $shadow-color) {
+    &::file-selector-button {
+      background-color: $bg;
+      border-color: $border;
+    }
+  
+    &:hover,
+    &:active {
+      &::file-selector-button {
+        background-color: $hover-bg;
+        border-color: $hover-border;
+      }
+    }
+  
+    &:focus {
+      &::file-selector-button {
+        background-color: $hover-bg;
+        border-color: $hover-border;
+        box-shadow: 0 0 0 0.125rem $shadow-color;
+      }
+    }
+  }
+  
+  // Base file input styles
+  [type="file"] {
     color: #6c757d;
-    /* Hack to display outline on focused file selector button with overflow hidden */
+    // Hack to display outline on focused file selector button with overflow hidden
     margin-left: -0.125rem;
     padding: 0.375rem 0;
     padding-left: 0.125rem;
@@ -14,95 +39,81 @@
     font-family: inherit;
     font-size: 1rem;
     line-height: 1.5;
-}
-
-[type="file"]::file-selector-button {
-    margin-right: 0.5rem;
-    padding: 0.375rem 0.75rem;
-    border: 1px solid #6c757d;
-    border-radius: 0.25rem;
-    background-color: #6c757d;
-    color: #fff;
-    font-family: inherit;
-    font-size: 1rem;
-    line-height: 1.5;
-    cursor: pointer;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-[type="file"]:hover::file-selector-button,
-[type="file"]:active::file-selector-button {
-    background-color: #5a6268;
-    border-color: #545b62;
-}
-
-[type="file"]:focus {
-    outline: none;
-}
-
-[type="file"]:focus::file-selector-button {
-    background-color: #5a6268;
-    border-color: #545b62;
-    box-shadow: 0 0 0 0.125rem rgba(108, 117, 125, 0.25);
-}
-
-/* Disabled state */
-[type="file"]:disabled::file-selector-button {
-    background-color: #e9ecef;
-    border-color: #dee2e6;
-    color: #6c757d;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* Alternative button color schemes */
-[type="file"][data-variant="primary"]::file-selector-button {
-    background-color: #1b6ec2;
-    border-color: #1b6ec2;
-}
-
-[type="file"][data-variant="primary"]:hover::file-selector-button,
-[type="file"][data-variant="primary"]:active::file-selector-button {
-    background-color: #1557a0;
-    border-color: #124d8e;
-}
-
-[type="file"][data-variant="primary"]:focus::file-selector-button {
-    background-color: #1557a0;
-    border-color: #124d8e;
-    box-shadow: 0 0 0 0.125rem rgba(27, 110, 194, 0.25);
-}
-
-[type="file"][data-variant="success"]::file-selector-button {
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-[type="file"][data-variant="success"]:hover::file-selector-button,
-[type="file"][data-variant="success"]:active::file-selector-button {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-
-[type="file"][data-variant="success"]:focus::file-selector-button {
-    background-color: #218838;
-    border-color: #1e7e34;
-    box-shadow: 0 0 0 0.125rem rgba(40, 167, 69, 0.25);
-}
-
-[type="file"][data-variant="danger"]::file-selector-button {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
-[type="file"][data-variant="danger"]:hover::file-selector-button,
-[type="file"][data-variant="danger"]:active::file-selector-button {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-[type="file"][data-variant="danger"]:focus::file-selector-button {
-    background-color: #c82333;
-    border-color: #bd2130;
-    box-shadow: 0 0 0 0.125rem rgba(220, 53, 69, 0.25);
-}
+  
+    // File selector button base styles
+    &::file-selector-button {
+      margin-right: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #6c757d;
+      border-radius: 0.25rem;
+      background-color: #6c757d;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+  
+    // Hover and active states
+    &:hover,
+    &:active {
+      &::file-selector-button {
+        background-color: #5a6268;
+        border-color: #545b62;
+      }
+    }
+  
+    // Focus state
+    &:focus {
+      outline: none;
+  
+      &::file-selector-button {
+        background-color: #5a6268;
+        border-color: #545b62;
+        box-shadow: 0 0 0 0.125rem rgba(108, 117, 125, 0.25);
+      }
+    }
+  
+    // Disabled state
+    &:disabled {
+      &::file-selector-button {
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+        color: #6c757d;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
+  
+  // Color variants
+  [type="file"][data-variant="primary"] {
+    @include file-button-variant(
+      #1b6ec2,
+      #1b6ec2,
+      #1557a0,
+      #124d8e,
+      rgba(27, 110, 194, 0.25)
+    );
+  }
+  
+  [type="file"][data-variant="success"] {
+    @include file-button-variant(
+      #28a745,
+      #28a745,
+      #218838,
+      #1e7e34,
+      rgba(40, 167, 69, 0.25)
+    );
+  }
+  
+  [type="file"][data-variant="danger"] {
+    @include file-button-variant(
+      #dc3545,
+      #dc3545,
+      #c82333,
+      #bd2130,
+      rgba(220, 53, 69, 0.25)
+    );
+  }
