@@ -1,0 +1,214 @@
+/**
+ * Input type range (slider)
+ * Standalone implementation with no external dependencies
+ */
+
+ [type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 1.25rem;
+    background: none;
+    cursor: pointer;
+  }
+  
+  /* Remove focus outline (we'll add custom focus styles) */
+  [type="range"]:focus {
+    outline: none;
+  }
+  
+  /* Webkit (Chrome, Safari, Edge) - Track */
+  [type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.375rem;
+    border-radius: 0.25rem;
+    background-color: #c0c0c0;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  /* Firefox - Track */
+  [type="range"]::-moz-range-track {
+    width: 100%;
+    height: 0.375rem;
+    border-radius: 0.25rem;
+    background-color: #c0c0c0;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  /* IE/Edge - Track */
+  [type="range"]::-ms-track {
+    width: 100%;
+    height: 0.375rem;
+    border-radius: 0.25rem;
+    background-color: #c0c0c0;
+    border-color: transparent;
+    color: transparent;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  /* Webkit (Chrome, Safari, Edge) - Thumb */
+  [type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -0.4375rem; /* (thumb height - track height) / 2 */
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #1b6ec2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  }
+  
+  /* Firefox - Thumb */
+  [type="range"]::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #1b6ec2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  }
+  
+  /* IE/Edge - Thumb */
+  [type="range"]::-ms-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #1b6ec2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  }
+  
+  /* Active and Focus states - Track */
+  [type="range"]:active::-webkit-slider-runnable-track,
+  [type="range"]:focus::-webkit-slider-runnable-track {
+    background-color: #1b6ec2;
+  }
+  
+  [type="range"]:active::-moz-range-track,
+  [type="range"]:focus::-moz-range-track {
+    background-color: #1b6ec2;
+  }
+  
+  [type="range"]:active::-ms-track,
+  [type="range"]:focus::-ms-track {
+    background-color: #1b6ec2;
+  }
+  
+  /* Active and Focus states - Thumb */
+  [type="range"]:active::-webkit-slider-thumb,
+  [type="range"]:focus::-webkit-slider-thumb {
+    background-color: #124d8e;
+  }
+  
+  [type="range"]:active::-moz-range-thumb,
+  [type="range"]:focus::-moz-range-thumb {
+    background-color: #124d8e;
+  }
+  
+  [type="range"]:active::-ms-thumb,
+  [type="range"]:focus::-ms-thumb {
+    background-color: #124d8e;
+  }
+  
+  /* Active state - Scale thumb */
+  [type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.25);
+  }
+  
+  [type="range"]:active::-moz-range-thumb {
+    transform: scale(1.25);
+  }
+  
+  [type="range"]:active::-ms-thumb {
+    transform: scale(1.25);
+  }
+  
+  /* Disabled state */
+  [type="range"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  [type="range"]:disabled::-webkit-slider-runnable-track {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  [type="range"]:disabled::-moz-range-track {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  [type="range"]:disabled::-ms-track {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  [type="range"]:disabled::-webkit-slider-thumb {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  [type="range"]:disabled::-moz-range-thumb {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  [type="range"]:disabled::-ms-thumb {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  /* Color variants */
+  [type="range"][data-variant="success"]::-webkit-slider-thumb,
+  [type="range"][data-variant="success"]::-moz-range-thumb,
+  [type="range"][data-variant="success"]::-ms-thumb {
+    background-color: #28a745;
+  }
+  
+  [type="range"][data-variant="success"]:active::-webkit-slider-runnable-track,
+  [type="range"][data-variant="success"]:focus::-webkit-slider-runnable-track,
+  [type="range"][data-variant="success"]:active::-moz-range-track,
+  [type="range"][data-variant="success"]:focus::-moz-range-track,
+  [type="range"][data-variant="success"]:active::-ms-track,
+  [type="range"][data-variant="success"]:focus::-ms-track {
+    background-color: #28a745;
+  }
+  
+  [type="range"][data-variant="danger"]::-webkit-slider-thumb,
+  [type="range"][data-variant="danger"]::-moz-range-thumb,
+  [type="range"][data-variant="danger"]::-ms-thumb {
+    background-color: #dc3545;
+  }
+  
+  [type="range"][data-variant="danger"]:active::-webkit-slider-runnable-track,
+  [type="range"][data-variant="danger"]:focus::-webkit-slider-runnable-track,
+  [type="range"][data-variant="danger"]:active::-moz-range-track,
+  [type="range"][data-variant="danger"]:focus::-moz-range-track,
+  [type="range"][data-variant="danger"]:active::-ms-track,
+  [type="range"][data-variant="danger"]:focus::-ms-track {
+    background-color: #dc3545;
+  }
+  
+  [type="range"][data-variant="warning"]::-webkit-slider-thumb,
+  [type="range"][data-variant="warning"]::-moz-range-thumb,
+  [type="range"][data-variant="warning"]::-ms-thumb {
+    background-color: #ffc107;
+  }
+  
+  [type="range"][data-variant="warning"]:active::-webkit-slider-runnable-track,
+  [type="range"][data-variant="warning"]:focus::-webkit-slider-runnable-track,
+  [type="range"][data-variant="warning"]:active::-moz-range-track,
+  [type="range"][data-variant="warning"]:focus::-moz-range-track,
+  [type="range"][data-variant="warning"]:active::-ms-track,
+  [type="range"][data-variant="warning"]:focus::-ms-track {
+    background-color: #ffc107;
+  }

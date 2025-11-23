@@ -1,4 +1,4 @@
-// Accessibility & User interaction utilities
+// Accessibility & interaction utilities
 
 [aria-controls] {
   cursor: pointer;
@@ -26,7 +26,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
   direction: rtl;
 }
 
-// Reduce Motion Features
+// Reduce motion features
 @media (prefers-reduced-motion: reduce) {
   *:not([aria-busy="true"]),
   :not([aria-busy="true"])::before,
