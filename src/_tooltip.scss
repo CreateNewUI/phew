@@ -4,235 +4,235 @@
 
 // Base tooltip styles
 [data-tooltip] {
-    position: relative;
-  
-    // Elements that aren't interactive get dotted underline
-    &:not(a, button, input, [role="button"]) {
-      border-bottom: 1px dotted;
-      text-decoration: none;
-      cursor: help;
-    }
-  
-    // Tooltip bubble base
-    &::before,
-    &::after {
-      display: block;
-      z-index: 99;
-      position: absolute;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    }
-  
-    // Tooltip content
-    &::before {
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.25rem;
-      background: #212529;
-      content: attr(data-tooltip);
-      color: #fff;
-      font-size: 0.875rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  
-    // Tooltip caret
-    &::after {
-      content: "";
-      background-color: transparent;
-      color: #212529;
-    }
-  
-    // Show tooltip on hover and focus
-    &:focus,
-    &:hover {
-      &::before,
-      &::after {
-        opacity: 1;
-      }
-    }
+  position: relative;
+
+// Elements that aren't interactive get dotted underline
+&:not(a, button, input, [role="button"]) {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+  cursor: help;
+}
+
+// Tooltip bubble base
+&::before,
+&::after {
+  display: block;
+  z-index: 99;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+// Tooltip content
+&::before {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: #212529;
+  content: attr(data-tooltip);
+  color: #fff;
+  font-size: 0.875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Tooltip caret
+&::after {
+  content: "";
+  background-color: transparent;
+  color: #212529;
+}
+
+// Show tooltip on hover and focus
+&:focus,
+&:hover {
+  &::before,
+  &::after {
+    opacity: 1;
   }
-  
-  // Placement - Top (default)
-  [data-tooltip],
-  [data-tooltip][data-placement="top"] {
-    &::before,
-    &::after {
-      bottom: 100%;
-      left: 50%;
-      transform: translate(-50%, -0.25rem);
-    }
-  
-    &::after {
-      transform: translate(-50%, 0);
-      border-top: 0.3rem solid;
-      border-right: 0.3rem solid transparent;
-      border-left: 0.3rem solid transparent;
-    }
+}
+}
+
+// Placement - Top (default)
+[data-tooltip],
+[data-tooltip][data-placement="top"] {
+&::before,
+&::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -0.25rem);
+}
+
+&::after {
+  transform: translate(-50%, 0);
+  border-top: 0.3rem solid;
+  border-right: 0.3rem solid transparent;
+  border-left: 0.3rem solid transparent;
+}
+}
+
+// Placement - Bottom
+[data-tooltip][data-placement="bottom"] {
+&::before,
+&::after {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0.25rem);
+}
+
+&::after {
+  transform: translate(-50%, -0.3rem);
+  border: 0.3rem solid transparent;
+  border-bottom: 0.3rem solid;
+}
+}
+
+// Placement - Left
+[data-tooltip][data-placement="left"] {
+&::before,
+&::after {
+  top: 50%;
+  right: 100%;
+  transform: translate(-0.25rem, -50%);
+}
+
+&::after {
+  transform: translate(0.3rem, -50%);
+  border: 0.3rem solid transparent;
+  border-left: 0.3rem solid;
+}
+}
+
+// Placement - Right
+[data-tooltip][data-placement="right"] {
+&::before,
+&::after {
+  top: 50%;
+  left: 100%;
+  transform: translate(0.25rem, -50%);
+}
+
+&::after {
+  transform: translate(-0.3rem, -50%);
+  border: 0.3rem solid transparent;
+  border-right: 0.3rem solid;
+}
+}
+
+// Animations for non-touch devices
+@media (hover: hover) and (pointer: fine) {
+[data-tooltip]:focus,
+[data-tooltip]:hover {
+  &::before,
+  &::after {
+    animation: 0.2s forwards;
   }
-  
-  // Placement - Bottom
-  [data-tooltip][data-placement="bottom"] {
-    &::before,
-    &::after {
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, 0.25rem);
-    }
-  
-    &::after {
-      transform: translate(-50%, -0.3rem);
-      border: 0.3rem solid transparent;
-      border-bottom: 0.3rem solid;
-    }
+
+  &::before {
+    animation-name: tooltip-slide-top;
   }
-  
-  // Placement - Left
-  [data-tooltip][data-placement="left"] {
-    &::before,
-    &::after {
-      top: 50%;
-      right: 100%;
-      transform: translate(-0.25rem, -50%);
-    }
-  
-    &::after {
-      transform: translate(0.3rem, -50%);
-      border: 0.3rem solid transparent;
-      border-left: 0.3rem solid;
-    }
+
+  &::after {
+    animation-name: tooltip-caret-slide-top;
   }
-  
-  // Placement - Right
-  [data-tooltip][data-placement="right"] {
-    &::before,
-    &::after {
-      top: 50%;
-      left: 100%;
-      transform: translate(0.25rem, -50%);
-    }
-  
-    &::after {
-      transform: translate(-0.3rem, -50%);
-      border: 0.3rem solid transparent;
-      border-right: 0.3rem solid;
-    }
+}
+
+[data-tooltip][data-placement="bottom"]:focus,
+[data-tooltip][data-placement="bottom"]:hover {
+  &::before {
+    animation-name: tooltip-slide-bottom;
   }
-  
-  // Animations for non-touch devices
-  @media (hover: hover) and (pointer: fine) {
-    [data-tooltip]:focus,
-    [data-tooltip]:hover {
-      &::before,
-      &::after {
-        animation: 0.2s forwards;
-      }
-  
-      &::before {
-        animation-name: tooltip-slide-top;
-      }
-  
-      &::after {
-        animation-name: tooltip-caret-slide-top;
-      }
-    }
-  
-    [data-tooltip][data-placement="bottom"]:focus,
-    [data-tooltip][data-placement="bottom"]:hover {
-      &::before {
-        animation-name: tooltip-slide-bottom;
-      }
-  
-      &::after {
-        animation-name: tooltip-caret-slide-bottom;
-      }
-    }
-  
-    [data-tooltip][data-placement="left"]:focus,
-    [data-tooltip][data-placement="left"]:hover {
-      &::before {
-        animation-name: tooltip-slide-left;
-      }
-  
-      &::after {
-        animation-name: tooltip-caret-slide-left;
-      }
-    }
-  
-    [data-tooltip][data-placement="right"]:focus,
-    [data-tooltip][data-placement="right"]:hover {
-      &::before {
-        animation-name: tooltip-slide-right;
-      }
-  
-      &::after {
-        animation-name: tooltip-caret-slide-right;
-      }
-    }
+
+  &::after {
+    animation-name: tooltip-caret-slide-bottom;
   }
-  
-  // Keyframe animations
-  @keyframes tooltip-slide-top {
-    from {
-      transform: translate(-50%, 0.75rem);
-      opacity: 0;
-    }
+}
+
+[data-tooltip][data-placement="left"]:focus,
+[data-tooltip][data-placement="left"]:hover {
+  &::before {
+    animation-name: tooltip-slide-left;
   }
-  
-  @keyframes tooltip-caret-slide-top {
-    from {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
+
+  &::after {
+    animation-name: tooltip-caret-slide-left;
   }
-  
-  @keyframes tooltip-slide-bottom {
-    from {
-      transform: translate(-50%, -0.75rem);
-      opacity: 0;
-    }
+}
+
+[data-tooltip][data-placement="right"]:focus,
+[data-tooltip][data-placement="right"]:hover {
+  &::before {
+    animation-name: tooltip-slide-right;
   }
-  
-  @keyframes tooltip-caret-slide-bottom {
-    from {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
+
+  &::after {
+    animation-name: tooltip-caret-slide-right;
   }
-  
-  @keyframes tooltip-slide-left {
-    from {
-      transform: translate(0.75rem, -50%);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes tooltip-caret-slide-left {
-    from {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-  
-  @keyframes tooltip-slide-right {
-    from {
-      transform: translate(-0.75rem, -50%);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes tooltip-caret-slide-right {
-    from {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
+}
+}
+
+// Keyframe animations
+@keyframes tooltip-slide-top {
+from {
+  transform: translate(-50%, 0.75rem);
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-caret-slide-top {
+from {
+  opacity: 0;
+}
+50% {
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-slide-bottom {
+from {
+  transform: translate(-50%, -0.75rem);
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-caret-slide-bottom {
+from {
+  opacity: 0;
+}
+50% {
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-slide-left {
+from {
+  transform: translate(0.75rem, -50%);
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-caret-slide-left {
+from {
+  opacity: 0;
+}
+50% {
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-slide-right {
+from {
+  transform: translate(-0.75rem, -50%);
+  opacity: 0;
+}
+}
+
+@keyframes tooltip-caret-slide-right {
+from {
+  opacity: 0;
+}
+50% {
+  opacity: 0;
+}
+}

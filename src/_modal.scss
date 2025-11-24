@@ -2,158 +2,158 @@
  * Modal
  */
 
- :root,
- :host {
-   --scrollbar-width: 0px;
- }
- 
- // Base dialog/modal styles
- dialog {
-   display: flex;
-   z-index: 999;
-   position: fixed;
-   inset: 0;
-   align-items: center;
-   justify-content: center;
-   width: inherit;
-   min-width: 100%;
-   height: inherit;
-   min-height: 100%;
-   padding: 0;
-   border: 0;
-   backdrop-filter: blur(0.25rem);
-   background-color: rgba(0, 0, 0, 0.65);
-   color: #212529;
- 
-   // Modal content container (article)
-   > article {
-     width: 100%;
-     max-width: 540px;
-     max-height: calc(100vh - 2rem);
-     margin: 1rem;
-     padding: 1.5rem;
-     overflow: auto;
-     border-radius: 0.25rem;
-     background-color: #fff;
-     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
- 
-     @media (min-width: 576px) {
-       max-width: 510px;
-     }
- 
-     @media (min-width: 768px) {
-       max-width: 700px;
-     }
- 
-     // Modal header
-     > header {
-       margin-bottom: 1rem;
- 
-       > * {
-         margin-bottom: 0;
-       }
- 
-       // Close button in header
-       .close,
-       :is(a, button)[rel="prev"] {
-         float: right;
-         margin: 0 0 0 1rem;
-         padding: 0;
-       }
-     }
- 
-     // Modal footer
-     > footer {
-       margin-top: 1rem;
-       text-align: right;
- 
-       button,
-       [role="button"] {
-         margin-bottom: 0;
- 
-         &:not(:first-of-type) {
-           margin-left: 0.5rem;
-         }
-       }
-     }
- 
-     // Close icon button
-     .close,
-     :is(a, button)[rel="prev"] {
-       display: block;
-       width: 1rem;
-       height: 1rem;
-       margin: -1rem auto 1rem;
-       border: none;
-       background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") center / auto 1rem no-repeat;
-       opacity: 0.5;
-       cursor: pointer;
-       transition: opacity 0.15s ease-in-out;
- 
-       &:hover {
-         opacity: 1;
-       }
-     }
-   }
- 
-   // Closed state
-   &:not([open]),
-   &[open="false"] {
-     display: none;
-   }
- 
-   // Backdrop
-   &::backdrop {
-     background-color: transparent;
-   }
- }
- 
- // Body class when modal is open
- .modal-is-open {
-   padding-right: var(--scrollbar-width, 0px);
-   overflow: hidden;
-   pointer-events: none;
-   touch-action: none;
- 
-   dialog {
-     pointer-events: auto;
-     touch-action: auto;
-   }
- }
- 
- // Opening animation
- .modal-is-opening {
-   dialog {
-     animation: modal-overlay-open 0.8s ease-in-out both;
-   }
- 
-   dialog > article {
-     animation: modal-content-open 0.2s ease-in-out 0.2s both;
-   }
- }
- 
- // Closing animation
- .modal-is-closing {
-   dialog {
-     animation: modal-overlay-open 0.8s ease-in-out both reverse;
-   }
- 
-   dialog > article {
-     animation: modal-content-open 0.2s ease-in-out both reverse;
-   }
- }
- 
- // Keyframe animations
- @keyframes modal-overlay-open {
-   from {
-     backdrop-filter: none;
-     background-color: transparent;
-   }
- }
- 
- @keyframes modal-content-open {
-   from {
-     transform: translateY(-100%);
-     opacity: 0;
-   }
- }
+:root,
+:host {
+  --scrollbar-width: 0px;
+}
+
+// Base dialog/modal styles
+dialog {
+  display: flex;
+  z-index: 999;
+  position: fixed;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+  min-width: 100%;
+  height: inherit;
+  min-height: 100%;
+  padding: 0;
+  border: 0;
+  backdrop-filter: blur(0.25rem);
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #212529;
+
+  // Modal content container (article)
+  > article {
+    width: 100%;
+    max-width: 540px;
+    max-height: calc(100vh - 2rem);
+    margin: 1rem;
+    padding: 1.5rem;
+    overflow: auto;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+    @media (min-width: 576px) {
+      max-width: 510px;
+    }
+
+    @media (min-width: 768px) {
+      max-width: 700px;
+    }
+
+    // Modal header
+    > header {
+      margin-bottom: 1rem;
+
+      > * {
+        margin-bottom: 0;
+      }
+
+      // Close button in header
+      .close,
+      :is(a, button)[rel="prev"] {
+        float: right;
+        margin: 0 0 0 1rem;
+        padding: 0;
+      }
+    }
+
+    // Modal footer
+    > footer {
+      margin-top: 1rem;
+      text-align: right;
+
+      button,
+      [role="button"] {
+        margin-bottom: 0;
+
+        &:not(:first-of-type) {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    // Close icon button
+    .close,
+    :is(a, button)[rel="prev"] {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin: -1rem auto 1rem;
+      border: none;
+      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") center / auto 1rem no-repeat;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 0.15s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Closed state
+  &:not([open]),
+  &[open="false"] {
+    display: none;
+  }
+
+  // Backdrop
+  &::backdrop {
+    background-color: transparent;
+  }
+}
+
+// Body class when modal is open
+.modal-is-open {
+  padding-right: var(--scrollbar-width, 0px);
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: none;
+
+  dialog {
+    pointer-events: auto;
+    touch-action: auto;
+  }
+}
+
+// Opening animation
+.modal-is-opening {
+  dialog {
+    animation: modal-overlay-open 0.8s ease-in-out both;
+  }
+
+  dialog > article {
+    animation: modal-content-open 0.2s ease-in-out 0.2s both;
+  }
+}
+
+// Closing animation
+.modal-is-closing {
+  dialog {
+    animation: modal-overlay-open 0.8s ease-in-out both reverse;
+  }
+
+  dialog > article {
+    animation: modal-content-open 0.2s ease-in-out both reverse;
+  }
+}
+
+// Keyframe animations
+@keyframes modal-overlay-open {
+  from {
+    backdrop-filter: none;
+    background-color: transparent;
+  }
+}
+
+@keyframes modal-content-open {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
