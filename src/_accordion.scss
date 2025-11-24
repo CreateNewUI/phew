@@ -8,20 +8,18 @@ $chevron-primary: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
 // Base accordion styles
 details {
-  margin-bottom: 1rem;
+  margin-bottom: var(--size-xs);
   padding: 0;
-  border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
-  background-color: #fff;
+  border: 1px solid var(--border-muted);
+  background-color: var(--background);
 
   summary {
-    padding: 0.75rem 1rem;
-    line-height: 1rem;
+    padding: var(--spacing-m) var(--spacing-l);
     list-style-type: none;
-    color: #495057;
+    color: var(--content-primary);
     cursor: pointer;
     user-select: none;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    transition: color var(--default-transition-duration) ease-in-out, background-color var(--default-transition-duration) ease-in-out;
 
     // Remove default markers
     &::-webkit-details-marker,
@@ -33,36 +31,35 @@ details {
     &::after {
       content: "";
       float: right;
-      width: 1rem;
-      height: 1rem;
+      width: var(--size-xs);
+      height: var(--size-xs);
       margin-left: 0.5rem;
       background: $chevron right center / 1rem no-repeat;
       transform: rotate(-90deg);
-      transition: transform 0.15s ease-in-out;
+      transition: transform var(--default-transition-duration) ease-in-out;
     }
 
     &:hover {
-      background-color: #f8f9fa;
+      background-color: var(--background-hover);
     }
 
     &:focus-visible {
-      outline: 2px solid #1b6ec2;
+      outline: 1.5px solid var(--border-focus);
       outline-offset: 0.5rem;
-      color: #1b6ec2;
     }
   }
 
   > :not(summary) {
-    padding: 0.75rem 1rem;
+    padding: var(--spacing-m) var(--spacing-l);
   }
 
   // Open state
   &[open] {
-    padding-bottom: 0.75rem;
+    padding-bottom: var(--spacing-m);
 
     > summary {
-      border-bottom: 1px solid #dee2e6;
-      color: #212529;
+      border-bottom: 1px solid var(--border-muted);
+      color: var(--content-primary);
 
       &::after {
         transform: rotate(0);
