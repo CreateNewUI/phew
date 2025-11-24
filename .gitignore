@@ -9,3 +9,5 @@ Thumbs.db
 
 node_modules/
 .parcel-cache/
+playground.html
+notes.md
