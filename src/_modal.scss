@@ -21,21 +21,21 @@ dialog {
   min-height: 100%;
   padding: 0;
   border: 0;
-  backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(var(--spacing-02));
   background-color: rgba(0, 0, 0, 0.65);
-  color: #212529;
+  color: var(--content-primary);
 
   // Modal content container (article)
-  > article {
+  >article {
     width: 100%;
     max-width: 540px;
     max-height: calc(100vh - 2rem);
-    margin: 1rem;
-    padding: 1.5rem;
+    margin: var(--spacing-06);
+    padding: var(--spacing-08);
     overflow: auto;
-    border-radius: 0.25rem;
-    background-color: #fff;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-sm);
+    background-color: var(--white);
+    box-shadow: 0 var(--spacing-04) var(--spacing-06) rgba(0, 0, 0, 0.15);
 
     @media (min-width: 576px) {
       max-width: 510px;
@@ -46,10 +46,10 @@ dialog {
     }
 
     // Modal header
-    > header {
+    >header {
       margin-bottom: 1rem;
 
-      > * {
+      >* {
         margin-bottom: 0;
       }
 
@@ -57,13 +57,13 @@ dialog {
       .close,
       :is(a, button)[rel="prev"] {
         float: right;
-        margin: 0 0 0 1rem;
+        margin: 0 0 0 var(--spacing-06);
         padding: 0;
       }
     }
 
     // Modal footer
-    > footer {
+    >footer {
       margin-top: 1rem;
       text-align: right;
 
@@ -72,7 +72,7 @@ dialog {
         margin-bottom: 0;
 
         &:not(:first-of-type) {
-          margin-left: 0.5rem;
+          margin-left: var(--spacing-04);
         }
       }
     }
@@ -81,11 +81,11 @@ dialog {
     .close,
     :is(a, button)[rel="prev"] {
       display: block;
-      width: 1rem;
-      height: 1rem;
-      margin: -1rem auto 1rem;
+      width: var(--size-xs);
+      height: var(--size-xs);
+      margin: calc(var(--spacing-06) * -1) auto var(--spacing-06);
       border: none;
-      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") center / auto 1rem no-repeat;
+      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") center / auto var(--size-xs) no-repeat;
       opacity: 0.5;
       cursor: pointer;
       transition: opacity 0.15s ease-in-out;
@@ -127,7 +127,7 @@ dialog {
     animation: modal-overlay-open 0.8s ease-in-out both;
   }
 
-  dialog > article {
+  dialog>article {
     animation: modal-content-open 0.2s ease-in-out 0.2s both;
   }
 }
@@ -138,7 +138,7 @@ dialog {
     animation: modal-overlay-open 0.8s ease-in-out both reverse;
   }
 
-  dialog > article {
+  dialog>article {
     animation: modal-content-open 0.2s ease-in-out both reverse;
   }
 }

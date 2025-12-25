@@ -4,12 +4,12 @@
 
 // Base color input styles
 [type="color"] {
-  width: 3rem;
-  height: 2.5rem;
-  padding: 0.25rem;
-  border: 1px solid #c0c0c0;
-  border-radius: 0.25rem;
-  background-color: #fff;
+  width: var(--spacing-11);
+  height: var(--spacing-10);
+  padding: var(--spacing-02);
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
   cursor: pointer;
   vertical-align: middle;
 
@@ -21,26 +21,26 @@
   // Webkit (Chrome, Safari, Edge) - Color swatch
   &::-webkit-color-swatch {
     border: 0;
-    border-radius: 0.125rem;
+    border-radius: var(--radius-xs);
   }
 
   // Firefox - Color swatch
   &::-moz-color-swatch {
     border: 0;
-    border-radius: 0.125rem;
+    border-radius: var(--radius-xs);
   }
 
   // Focus state
   &:focus {
-    border-color: #1b6ec2;
-    box-shadow: 0 0 0 0.125rem rgba(27, 110, 194, 0.25);
+    border-color: var(--link);
+    box-shadow: 0 0 0 var(--spacing-01) rgba(27, 110, 194, 0.25);
     outline: none;
   }
 
   // Disabled state
   &:disabled {
-    background-color: #e9ecef;
-    border-color: #dee2e6;
+    background-color: var(--button-disabled);
+    border-color: var(--border);
     cursor: not-allowed;
     opacity: 0.6;
   }
