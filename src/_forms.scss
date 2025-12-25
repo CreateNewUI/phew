@@ -1,0 +1,52 @@
+/**
+ * Forms (Generic Inputs)
+ */
+
+$input-text-types: '[type="text"], [type="password"], [type="email"], [type="number"], [type="url"], [type="tel"], [type="search"]';
+
+#{$input-text-types},
+textarea {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-02) var(--spacing-03);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+    background-color: var(--background);
+    color: var(--content-primary);
+    font-family: inherit;
+    font-size: 1rem; // Standard size for inputs to avoid zoom on iOS
+    line-height: 1.5;
+    appearance: none;
+    transition: border-color var(--default-transition-duration) ease-in-out, box-shadow var(--default-transition-duration) ease-in-out;
+
+    &::placeholder {
+        color: var(--content-placeholder);
+    }
+
+    &:hover:not(:disabled) {
+        border-color: var(--border-strong);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--border-focus);
+        box-shadow: var(--focus-default);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: var(--button-disabled); // or background-secondary
+        opacity: 0.6;
+        color: var(--content-secondary);
+    }
+}
+
+textarea {
+    min-height: 5rem; // Reasonable default
+    resize: vertical;
+}
+
+// Ensure file input text matches (though file input structure is different)
+[type="file"] {
+    font-size: 1rem;
+}

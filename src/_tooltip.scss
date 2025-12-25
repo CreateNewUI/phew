@@ -22,7 +22,7 @@
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: opacity var(--default-transition-duration) ease-in-out, transform var(--default-transition-duration) ease-in-out;
   }
 
   // Tooltip content
@@ -68,9 +68,9 @@
 
   &::after {
     transform: translate(-50%, 0);
-    border-top: 0.3rem solid;
-    border-right: 0.3rem solid transparent;
-    border-left: 0.3rem solid transparent;
+    border-top: var(--spacing-03) solid;
+    border-right: var(--spacing-03) solid transparent;
+    border-left: var(--spacing-03) solid transparent;
   }
 }
 
@@ -85,9 +85,9 @@
   }
 
   &::after {
-    transform: translate(-50%, -0.3rem);
-    border: 0.3rem solid transparent;
-    border-bottom: 0.3rem solid;
+    transform: translate(-50%, calc(var(--spacing-03) * -1));
+    border: var(--spacing-03) solid transparent;
+    border-bottom: var(--spacing-03) solid;
   }
 }
 
@@ -102,9 +102,9 @@
   }
 
   &::after {
-    transform: translate(0.3rem, -50%);
-    border: 0.3rem solid transparent;
-    border-left: 0.3rem solid;
+    transform: translate(var(--spacing-03), -50%);
+    border: var(--spacing-03) solid transparent;
+    border-left: var(--spacing-03) solid;
   }
 }
 
@@ -119,9 +119,9 @@
   }
 
   &::after {
-    transform: translate(-0.3rem, -50%);
-    border: 0.3rem solid transparent;
-    border-right: 0.3rem solid;
+    transform: translate(calc(var(--spacing-03) * -1), -50%);
+    border: var(--spacing-03) solid transparent;
+    border-right: var(--spacing-03) solid;
   }
 }
 
@@ -133,7 +133,7 @@
 
     &::before,
     &::after {
-      animation: 0.2s forwards;
+      animation: var(--default-transition-duration) forwards ease-in-out;
     }
 
     &::before {
