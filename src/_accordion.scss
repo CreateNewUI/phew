@@ -32,8 +32,8 @@ details {
       float: right;
       width: var(--size-xs);
       height: var(--size-xs);
-      margin-left: 0.5rem;
-      background: $chevron right center / 1rem no-repeat;
+      margin-left: var(--spacing-04);
+      background: $chevron right center / var(--size-xs) no-repeat;
       transform: rotate(-90deg);
       transition: transform var(--default-transition-duration) ease-in-out;
     }
@@ -44,7 +44,7 @@ details {
 
     &:focus-visible {
       outline: 1.5px solid var(--border-focus);
-      outline-offset: 0.5rem;
+      outline-offset: var(--spacing-04);
     }
   }
 
@@ -56,7 +56,7 @@ details {
   &[open] {
     padding-bottom: var(--spacing-m);
 
-    > summary {
+    >summary {
       border-bottom: 1px solid var(--border-muted);
       color: var(--content-primary);
 
@@ -86,10 +86,9 @@ details[data-variant="borderless"] {
   border: none;
   background-color: transparent;
 
-  summary {
-  }
+  summary {}
 
-  &[open] > summary {
+  &[open]>summary {
     border-bottom: none;
   }
 }

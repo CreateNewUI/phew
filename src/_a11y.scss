@@ -23,19 +23,6 @@
   }
 }
 
-// Touch action for interactive elements
-a,
-area,
-button,
-input,
-label,
-select,
-summary,
-textarea,
-[tabindex] {
-  -ms-touch-action: manipulation;
-}
-
 // RTL direction
 [dir="rtl"] {
   direction: rtl;
@@ -43,6 +30,7 @@ textarea,
 
 // Reduce motion features
 @media (prefers-reduced-motion: reduce) {
+
   *:not([aria-busy="true"]),
   :not([aria-busy="true"])::before,
   :not([aria-busy="true"])::after {

@@ -19,14 +19,14 @@ label:has([type="checkbox"], [type="radio"]) {
   width: 1.25em;
   height: 1.25em;
   margin-top: -0.125em;
-  margin-inline-end: 0.5em;
-  border: 1px solid #c0c0c0;
-  background-color: #fff;
+  margin-inline-end: var(--spacing-04);
+  border: 1px solid var(--border-muted);
+  background-color: var(--white);
   vertical-align: middle;
   cursor: pointer;
 
   // Labels following inputs
-  ~ label {
+  ~label {
     display: inline-block;
     margin-bottom: 0;
     cursor: pointer;
@@ -39,16 +39,17 @@ label:has([type="checkbox"], [type="radio"]) {
 
 // Checkbox specific styles
 [type="checkbox"] {
+
   // Checked state
   &:checked {
-    background: #1b6ec2 $checkbox-checked-icon center / 0.75em no-repeat;
-    border-color: #1b6ec2;
+    background: var(--link) $checkbox-checked-icon center / 0.75em no-repeat;
+    border-color: var(--link);
   }
 
   // Indeterminate state
   &:indeterminate {
-    background: #1b6ec2 $checkbox-indeterminate-icon center / 0.75em no-repeat;
-    border-color: #1b6ec2;
+    background: var(--link) $checkbox-indeterminate-icon center / 0.75em no-repeat;
+    border-color: var(--link);
   }
 }
 
@@ -58,8 +59,8 @@ label:has([type="checkbox"], [type="radio"]) {
 
   // Checked state
   &:checked {
-    background-color: #fff;
-    border: 0.35em solid #1b6ec2;
+    background-color: var(--white);
+    border: 0.35em solid var(--link);
   }
 }
 
@@ -67,9 +68,9 @@ label:has([type="checkbox"], [type="radio"]) {
 [type="checkbox"][role="switch"] {
   width: 2.25em;
   height: 1.25em;
-  border: 1px solid #adb5bd;
+  border: 1px solid var(--border-muted);
   border-radius: 1.25em;
-  background-color: #adb5bd;
+  background-color: var(--border-muted);
 
   // Switch toggle
   &::before {
@@ -78,21 +79,21 @@ label:has([type="checkbox"], [type="radio"]) {
     aspect-ratio: 1;
     height: 100%;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
     transition: margin 0.1s ease-in-out;
   }
 
   // Focus state
   &:focus {
-    outline: 2px solid #1b6ec2;
+    outline: 2px solid var(--link);
     outline-offset: 2px;
   }
 
   // Checked state
   &:checked {
-    background-color: #1b6ec2;
-    border-color: #1b6ec2;
+    background-color: var(--link);
+    border-color: var(--link);
 
     &::before {
       margin-inline-start: calc(2.25em - 1.25em);
@@ -101,7 +102,7 @@ label:has([type="checkbox"], [type="radio"]) {
 
   // Disabled state
   &:disabled {
-    background-color: #e9ecef;
+    background-color: var(--button-disabled);
     cursor: not-allowed;
     opacity: 0.6;
   }
