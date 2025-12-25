@@ -2,7 +2,7 @@
  * Forms (Generic Inputs)
  */
 
-$input-text-types: '[type="text"], [type="password"], [type="email"], [type="number"], [type="url"], [type="tel"], [type="search"]';
+$input-text-types: '[type="text"], [type="password"], [type="email"], [type="number"], [type="url"], [type="tel"], [type="search"], [type="date"], [type="datetime-local"], [type="month"], [type="week"], [type="time"]';
 
 #{$input-text-types},
 textarea {

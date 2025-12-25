@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-new-ui-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -8,84 +8,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@new-ui/foundations@latest/dist/index.css">
     <link rel="stylesheet" href="dist/index.css">
     <style>
+        /* Minimal Layout Logic (Framework lacks Grid utilities) */
         :root {
             --container-max-width: 1200px;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-family-body, sans-serif);
-            color: var(--content-primary);
-            background-color: var(--background);
-            line-height: 1.5;
-        }
-
-        /* Layout Utilities */
         .container {
             max-width: var(--container-max-width);
             margin-inline: auto;
-            padding: var(--spacing-08);
         }
 
-        header {
-            padding: var(--spacing-10) 0;
-            border-bottom: 1px solid var(--border-muted);
-            margin-bottom: var(--spacing-10);
-            text-align: center;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: var(--desktop-heading-01);
-            font-weight: 800;
-            /* Assuming bold available */
-            letter-spacing: -0.02em;
-            margin-bottom: var(--spacing-04);
-            background: linear-gradient(135deg, var(--content-primary) 0%, var(--content-secondary) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: var(--desktop-heading-03);
-            margin-bottom: var(--spacing-06);
-            color: var(--content-primary);
-        }
-
-        h3 {
-            font-size: var(--desktop-heading-05);
-            margin-bottom: var(--spacing-04);
-            color: var(--content-secondary);
-            font-weight: 500;
-        }
-
-        p.subtitle {
-            font-size: var(--desktop-body-xl);
-            color: var(--content-secondary);
-            max-width: 60ch;
-            margin-inline: auto;
-        }
-
-        /* Grid Layout */
         .components-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: var(--spacing-08);
         }
 
-        .card {
-            background-color: var(--background-secondary);
-            border: 1px solid var(--border-muted);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-08);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Component Groups */
         .group {
             display: flex;
             gap: var(--spacing-04);
@@ -100,107 +38,85 @@
             width: 100%;
         }
 
-        /* Specific Polishing */
-        .color-swatch-group {
-            display: flex;
-            gap: var(--spacing-04);
-            flex-wrap: wrap;
-        }
-
-        .color-swatch {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-02);
-            padding: var(--spacing-02) var(--spacing-04);
-            border-radius: var(--radius-sm);
-            background: var(--background);
-            border: 1px solid var(--border-muted);
-            font-size: var(--desktop-code);
-        }
-
-        .swatch-dot {
-            width: var(--size-xs);
-            height: var(--size-xs);
-            border-radius: 50%;
-        }
-
-        label {
-            display: block;
-            margin-bottom: var(--spacing-02);
-            font-size: var(--desktop-caption);
-            font-weight: 500;
-            color: var(--content-secondary);
-        }
-
-        /* Full width items in cards */
-        input[type="search"],
-        input[type="text"],
-        input[type="file"],
-        select {
+        /* Component Full Width Overrides */
+        input:not([type="checkbox"]):not([type="radio"]),
+        select,
+        textarea {
             width: 100%;
         }
     </style>
 </head>
 
-<body data-new-ui-theme="dark">
+<body class="nu-u-bg-high-contrast nu-u-text--on-color nu-u-code">
 
-    <div class="container">
-        <header>
-            <h1>Phew Phew</h1>
+    <div class="container nu-u-p-xl">
+        <header class="nu-u-pb-xl nu-u-mb-xl nu-u-b--muted"
+            style="border-bottom-width: 1px; border-bottom-style: solid;">
+            <h1 class="nu-u-text--success nu-u-text--uppercase nu-u-fw-bold">> Phew Phew</h1>
         </header>
 
         <div class="components-grid">
 
             <!-- Buttons / Actions -->
-            <section class="card" style="grid-column: 1 / -1;">
-                <h2>Design Tokens & Typography</h2>
-                <div class="color-swatch-group">
-                    <div class="color-swatch"><span class="swatch-dot"
-                            style="background: var(--content-primary)"></span> Primary Content</div>
-                    <div class="color-swatch"><span class="swatch-dot"
-                            style="background: var(--content-secondary)"></span> Secondary Content</div>
-                    <div class="color-swatch"><span class="swatch-dot" style="background: var(--link)"></span> Link /
-                        Brand</div>
-                    <div class="color-swatch"><span class="swatch-dot"
-                            style="background: var(--support-success)"></span> Success</div>
-                    <div class="color-swatch"><span class="swatch-dot" style="background: var(--support-error)"></span>
-                        Error</div>
+            <section class="nu-u-p-xl nu-u-b--muted"
+                style="grid-column: 1 / -1; border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Design Tokens</h2>
+
+                <div class="group nu-u-mt-m">
+                    <div class="nu-u-p-s nu-u-b--muted nu-u-text--on-color"
+                        style="border-width: 1px; border-style: solid;"><span class="nu-u-d-inline-block"
+                            style="width:1em; height:1em; background:var(--content-primary); margin-right:0.5em;"></span>Primary
+                    </div>
+                    <div class="nu-u-p-s nu-u-b--muted nu-u-text--on-color"
+                        style="border-width: 1px; border-style: solid;"><span class="nu-u-d-inline-block"
+                            style="width:1em; height:1em; background:var(--content-secondary); margin-right:0.5em;"></span>Secondary
+                    </div>
+                    <div class="nu-u-p-s nu-u-b--muted nu-u-text--on-color"
+                        style="border-width: 1px; border-style: solid;"><span class="nu-u-d-inline-block"
+                            style="width:1em; height:1em; background:var(--link); margin-right:0.5em;"></span>Link</div>
+                    <div class="nu-u-p-s nu-u-b--muted nu-u-text--on-color"
+                        style="border-width: 1px; border-style: solid;"><span class="nu-u-d-inline-block"
+                            style="width:1em; height:1em; background:var(--support-success); margin-right:0.5em;"></span>Success
+                    </div>
+                    <div class="nu-u-p-s nu-u-b--muted nu-u-text--on-color"
+                        style="border-width: 1px; border-style: solid;"><span class="nu-u-d-inline-block"
+                            style="width:1em; height:1em; background:var(--support-error); margin-right:0.5em;"></span>Error
+                    </div>
                 </div>
             </section>
 
             <!-- Accordion -->
-            <section class="card">
-                <h2>Accordion</h2>
-                <div class="vertical-group">
+            <section class="nu-u-p-xl nu-u-b--muted" style="border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Accordion</h2>
+                <div class="vertical-group nu-u-mt-m">
                     <details>
                         <summary>Default Accordion</summary>
-                        <p class="nu-u-text--secondary" style="padding: var(--spacing-04)">Seamlessly expands to reveal
-                            content.</p>
+                        <p class="nu-u-text--secondary nu-u-p-m">Seamlessly expands to reveal content.</p>
                     </details>
                     <details open>
                         <summary>Pre-expanded</summary>
-                        <p class="nu-u-text--secondary" style="padding: var(--spacing-04)">This state is defined by the
-                            `open` attribute.</p>
+                        <p class="nu-u-text--secondary nu-u-p-m">This state is defined by the `open` attribute.</p>
                     </details>
                     <details data-variant="primary">
                         <summary>Primary Variant</summary>
-                        <p class="nu-u-text--secondary" style="padding: var(--spacing-04)">Highlighted with brand color.
-                        </p>
+                        <p class="nu-u-text--secondary nu-u-p-m">Highlighted with brand color.</p>
                     </details>
                     <details data-variant="borderless">
                         <summary>Borderless Variant</summary>
-                        <p class="nu-u-text--secondary" style="padding: var(--spacing-04)">Minimalist look without
-                            borders.</p>
+                        <p class="nu-u-text--secondary nu-u-p-m">Minimalist look without borders.</p>
                     </details>
                 </div>
             </section>
 
             <!-- Controls -->
-            <section class="card">
-                <h2>Controls</h2>
-                <div class="vertical-group">
+            <section class="nu-u-p-xl nu-u-b--muted" style="border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Controls</h2>
+                <div class="vertical-group nu-u-mt-m">
                     <div>
-                        <h3>Checkboxes</h3>
+                        <h3 class="nu-u-text--link nu-u-mb-s nu-u-fw-bold">Checkboxes</h3>
                         <div class="group">
                             <div><input type="checkbox" id="c1" checked><label for="c1" style="display:inline">
                                     Checked</label></div>
@@ -212,7 +128,7 @@
                     </div>
 
                     <div>
-                        <h3>Radios</h3>
+                        <h3 class="nu-u-text--link nu-u-mb-s nu-u-fw-bold">Radios</h3>
                         <div class="group">
                             <div><input type="radio" name="r" id="r1" checked><label for="r1" style="display:inline">
                                     Option A</label></div>
@@ -222,7 +138,7 @@
                     </div>
 
                     <div>
-                        <h3>Switches</h3>
+                        <h3 class="nu-u-text--link nu-u-mb-s nu-u-fw-bold">Switches</h3>
                         <div class="group">
                             <input type="checkbox" role="switch" id="s1">
                             <input type="checkbox" role="switch" id="s2" checked>
@@ -233,47 +149,49 @@
             </section>
 
             <!-- Inputs -->
-            <section class="card" style="grid-row: span 2">
-                <h2>Data Entry</h2>
-                <div class="vertical-group">
+            <section class="nu-u-p-xl nu-u-b--muted" style="grid-row: span 2; border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Data Entry</h2>
+                <div class="vertical-group nu-u-mt-m">
                     <div>
-                        <label>Search Input</label>
+                        <label class="nu-u-mb-xs">Search Input</label>
                         <input type="search" placeholder="Search components...">
                     </div>
 
                     <div>
-                        <label>Date Selection</label>
+                        <label class="nu-u-mb-xs">Date Selection</label>
                         <input type="date">
                     </div>
 
                     <div>
-                        <label>Time Selection</label>
+                        <label class="nu-u-mb-xs">Time Selection</label>
                         <input type="time">
                     </div>
 
                     <div>
-                        <label>Color Picker</label>
+                        <label class="nu-u-mb-xs">Color Picker</label>
                         <input type="color" value="#1b6ec2" style="width: 100%">
                     </div>
 
                     <div>
-                        <label>File Upload</label>
+                        <label class="nu-u-mb-xs">File Upload</label>
                         <input type="file">
                     </div>
 
                     <div>
-                        <label>Volume / Range</label>
-                        <input type="range" class="nu-u-text--primary">
+                        <label class="nu-u-mb-xs">Volume / Range</label>
+                        <input type="range">
                     </div>
                 </div>
             </section>
 
             <!-- Navigation / Dropdown -->
-            <section class="card">
-                <h2>Navigation & Dropdowns</h2>
-                <div class="vertical-group" style="height: 200px"> <!-- Fixed height to allow dropdown expansion -->
+            <section class="nu-u-p-xl nu-u-b--muted" style="border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Navigation</h2>
+                <div class="vertical-group nu-u-mt-m" style="height: 200px">
                     <div>
-                        <label>Standard Dropdown</label>
+                        <label class="nu-u-mb-xs">Standard Dropdown</label>
                         <details class="dropdown">
                             <summary>Select Action...</summary>
                             <ul>
@@ -289,7 +207,7 @@
                     </div>
 
                     <div>
-                        <label>Navigation Dropdown</label>
+                        <label class="nu-u-mb-xs">Navigation Dropdown</label>
                         <nav
                             style="background: var(--background); padding: var(--spacing-03); border-radius: var(--radius-sm); border: 1px solid var(--border-muted);">
                             <details class="dropdown">
@@ -305,23 +223,26 @@
             </section>
 
             <!-- Overlays -->
-            <section class="card">
-                <h2>Overlays & Feedback</h2>
-                <div class="vertical-group">
+            <section class="nu-u-p-xl nu-u-b--muted" style="border-width: 1px; border-style: solid;">
+                <h2 class="nu-u-text-black nu-u-bg-white nu-u-text--uppercase nu-u-fw-bold"
+                    style="display:inline-block; padding: 0 0.5rem;">Overlays</h2>
+                <div class="vertical-group nu-u-mt-m">
                     <div>
-                        <h3>Tooltips</h3>
+                        <h3 class="nu-u-text--link nu-u-mb-s nu-u-fw-bold">Tooltips</h3>
                         <div class="group">
-                            <button class="nu-u-bg-secondary" data-tooltip="Top tip" data-placement="top"
-                                style="border:1px solid var(--border-muted); padding: 0.5rem; border-radius: 4px; cursor: pointer;">Top</button>
-                            <button class="nu-u-bg-secondary" data-tooltip="Right tip" data-placement="right"
-                                style="border:1px solid var(--border-muted); padding: 0.5rem; border-radius: 4px; cursor: pointer;">Right</button>
+                            <button class="nu-u-bg-secondary nu-u-b--muted nu-u-p-s"
+                                style="border: 1px solid var(--border-muted); border-radius:4px; cursor: pointer;"
+                                data-tooltip="Top tip" data-placement="top">Top</button>
+                            <button class="nu-u-bg-secondary nu-u-b--muted nu-u-p-s"
+                                style="border: 1px solid var(--border-muted); border-radius:4px; cursor: pointer;"
+                                data-tooltip="Right tip" data-placement="right">Right</button>
                         </div>
                     </div>
 
                     <div>
-                        <h3>Modal Dialog</h3>
-                        <button id="openModalBtn"
-                            style="background: var(--link); color: white; border: none; padding: var(--spacing-03) var(--spacing-05); border-radius: var(--radius-sm); font-weight: 500; cursor: pointer; transition: opacity 0.2s;">
+                        <h3 class="nu-u-text--link nu-u-mb-s nu-u-fw-bold">Modal</h3>
+                        <button id="openModalBtn" class="nu-u-bg-selected nu-u-text-white"
+                            style="border:none; padding: var(--spacing-03) var(--spacing-05); border-radius: var(--radius-sm); cursor: pointer; font-weight: bold;">
                             Launch Demo Modal
                         </button>
                     </div>
@@ -339,20 +260,19 @@
             </header>
             <p class="nu-u-text--secondary">
                 Are you sure you want to proceed? This modal demonstrates the backdrop filter, radius, and shadow
-                utilities from the New UI framework.
+                utilities.
             </p>
             <footer>
                 <button class="nu-u-text--secondary" style="background:none; border:none; cursor:pointer;"
                     onclick="closeModalWithAnimation()">Cancel</button>
-                <button
-                    style="background:var(--link); color:white; border:none; padding: 0.5rem 1rem; border-radius: 4px; cursor:pointer;"
+                <button class="nu-u-bg-selected nu-u-text-white"
+                    style="border:none; padding: 0.5rem 1rem; border-radius: 4px; cursor:pointer;"
                     onclick="closeModalWithAnimation()">Confirm</button>
             </footer>
         </article>
     </dialog>
 
     <script>
-        // Modal Logic
         const modal = document.getElementById('demoModal');
         const openBtn = document.getElementById('openModalBtn');
         const closeBtn = modal.querySelector('.close');
@@ -360,18 +280,11 @@
         openBtn.addEventListener('click', () => {
             document.body.classList.add('modal-is-open', 'modal-is-opening');
             modal.showModal();
-            setTimeout(() => {
-                document.body.classList.remove('modal-is-opening');
-            }, 800);
+            setTimeout(() => { document.body.classList.remove('modal-is-opening'); }, 800);
         });
 
         closeBtn.addEventListener('click', closeModalWithAnimation);
-
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                closeModalWithAnimation();
-            }
-        });
+        modal.addEventListener('click', (event) => { if (event.target === modal) closeModalWithAnimation(); });
 
         function closeModalWithAnimation() {
             document.body.classList.add('modal-is-closing');
