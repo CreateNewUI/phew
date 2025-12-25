@@ -3,14 +3,15 @@
  */
 
 // Chevron icon
-$chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-$chevron-primary: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b6ec2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+$chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
 // Base accordion styles
 details {
   padding: 0;
   border: 1px solid var(--border-muted);
+  border-radius: var(--radius-sm);
   background-color: var(--background);
+  overflow: hidden;
 
   summary {
     padding: var(--spacing-s) var(--spacing-m);
@@ -33,7 +34,9 @@ details {
       width: var(--size-xs);
       height: var(--size-xs);
       margin-left: var(--spacing-04);
-      background: $chevron right center / var(--size-xs) no-repeat;
+      background-color: var(--content-secondary);
+      -webkit-mask: $chevron right center / var(--size-xs) no-repeat;
+      mask: $chevron right center / var(--size-xs) no-repeat;
       transform: rotate(-90deg);
       transition: transform var(--default-transition-duration) ease-in-out;
     }
@@ -43,8 +46,8 @@ details {
     }
 
     &:focus-visible {
-      outline: 1.5px solid var(--border-focus);
-      outline-offset: var(--spacing-04);
+      outline: none;
+      box-shadow: var(--focus-default);
     }
   }
 
@@ -76,7 +79,7 @@ details[data-variant="primary"] {
     background-color: var(--background);
 
     &::after {
-      background-image: $chevron-primary;
+      background-color: var(--link);
     }
   }
 }
@@ -86,7 +89,7 @@ details[data-variant="borderless"] {
   border: none;
   background-color: transparent;
 
-  summary {}
+
 
   &[open]>summary {
     border-bottom: none;

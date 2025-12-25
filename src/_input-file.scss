@@ -16,16 +16,16 @@
   // File selector button base styles
   &::file-selector-button {
     margin-right: var(--spacing-04);
-    padding: var(--spacing-03) var(--spacing-05);
+    padding: var(--spacing-04) var(--spacing-06);
     border: 1px solid var(--content-secondary);
     border-radius: var(--radius-sm);
     background-color: var(--content-secondary);
-    color: var(--white);
+    color: var(--content-on-color);
     font-family: inherit;
     font-size: var(--desktop-body);
     line-height: 1.5;
     cursor: pointer;
-    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: background-color var(--default-transition-duration) ease-in-out, border-color var(--default-transition-duration) ease-in-out;
   }
 
   // Hover state
@@ -40,8 +40,8 @@
 
     &::file-selector-button {
       background-color: var(--content-secondary-alt);
-      border-color: var(--content-secondary-alt);
-      box-shadow: 0 0 0 var(--spacing-01) rgba(108, 117, 125, 0.25);
+      border-color: var(--border-focus);
+      box-shadow: var(--focus-default);
     }
   }
 

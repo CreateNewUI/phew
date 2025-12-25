@@ -18,20 +18,7 @@ input[type="datetime-local"],
 input[type="month"],
 input[type="week"] {
   background-image: $calendar-icon;
-
-  // Focus state
-  &:focus {
-    border-color: var(--link);
-    box-shadow: 0 0 0 var(--spacing-01) rgba(27, 110, 194, 0.25);
-    outline: none;
-  }
-
-  // Disabled state
-  &:disabled {
-    background-color: var(--button-disabled);
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  // Focus/Disabled handled by _forms.scss
 
   // Hide the native calendar picker indicator (make it transparent overlay)
   &::-webkit-calendar-picker-indicator {
@@ -49,20 +36,7 @@ input[type="week"] {
 // Time input - Clock icon
 input[type="time"] {
   background-image: $clock-icon;
-
-  // Focus state
-  &:focus {
-    border-color: var(--link);
-    box-shadow: 0 0 0 var(--spacing-01) rgba(27, 110, 194, 0.25);
-    outline: none;
-  }
-
-  // Disabled state
-  &:disabled {
-    background-color: var(--button-disabled);
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+  // Focus/Disabled handled by _forms.scss
 
   // Hide the native calendar picker indicator (make it transparent overlay)
   &::-webkit-calendar-picker-indicator {

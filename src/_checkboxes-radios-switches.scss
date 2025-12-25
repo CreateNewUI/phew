@@ -3,8 +3,9 @@
  */
 
 // Icon variables
-$checkbox-checked-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-$checkbox-indeterminate-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+// Icon variables
+$checkbox-checked-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+$checkbox-indeterminate-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
 
 // Labels with checkbox/radio inputs
 label:has([type="checkbox"], [type="radio"]) {
@@ -21,7 +22,7 @@ label:has([type="checkbox"], [type="radio"]) {
   margin-top: -0.125em;
   margin-inline-end: var(--spacing-04);
   border: 1px solid var(--border-muted);
-  background-color: var(--white);
+  background-color: var(--background);
   vertical-align: middle;
   cursor: pointer;
 
@@ -41,15 +42,36 @@ label:has([type="checkbox"], [type="radio"]) {
 [type="checkbox"] {
 
   // Checked state
+  // Checked state
   &:checked {
-    background: var(--link) $checkbox-checked-icon center / 0.75em no-repeat;
+    background-color: var(--link);
     border-color: var(--link);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: var(--content-on-color);
+      -webkit-mask: $checkbox-checked-icon center / 0.75em no-repeat;
+      mask: $checkbox-checked-icon center / 0.75em no-repeat;
+    }
   }
 
   // Indeterminate state
   &:indeterminate {
-    background: var(--link) $checkbox-indeterminate-icon center / 0.75em no-repeat;
+    background-color: var(--link);
     border-color: var(--link);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: var(--content-on-color);
+      -webkit-mask: $checkbox-indeterminate-icon center / 0.75em no-repeat;
+      mask: $checkbox-indeterminate-icon center / 0.75em no-repeat;
+    }
   }
 }
 
@@ -59,7 +81,7 @@ label:has([type="checkbox"], [type="radio"]) {
 
   // Checked state
   &:checked {
-    background-color: var(--white);
+    background-color: var(--background);
     border: 0.35em solid var(--link);
   }
 }
@@ -79,15 +101,15 @@ label:has([type="checkbox"], [type="radio"]) {
     aspect-ratio: 1;
     height: 100%;
     border-radius: 50%;
-    background-color: var(--white);
-    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
-    transition: margin 0.1s ease-in-out;
+    background-color: var(--content-on-color);
+    box-shadow: var(--content);
+    transition: margin var(--default-transition-duration) ease-in-out;
   }
 
   // Focus state
   &:focus {
-    outline: 2px solid var(--link);
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: var(--focus-default);
   }
 
   // Checked state
